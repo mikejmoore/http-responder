@@ -25,12 +25,14 @@
   become: true
   lineinfile:
     path: /etc/rc.d/rc.local
+    insertafter: EOF
     line: "sudo su - ec2-user -c 'cd ./http-responder; gem install bundler; bundle'"
 
 - name: 'Launch script'
   become: true
   lineinfile:
     path: /etc/rc.d/rc.local
+    insertafter: EOF
     line: "sudo su - ec2-user -c 'cd ./http-responder; RAILS_ENV=production rails s -p 3000'"
 
 

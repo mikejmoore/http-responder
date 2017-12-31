@@ -19,5 +19,6 @@
 
 /node_modules
 /yarn-error.log
+build/ami/variables.json
 
 .byebug_history
