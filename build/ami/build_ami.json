@@ -32,7 +32,7 @@
   "provisioners": [
     {
         "type": "ansible",
-        "playbook_file": "./ansible-playbooks/http_responder_pb.yaml",
+        "playbook_file": "./ansible-playbooks/http_responder_ami_pb.yaml",
         "extra_arguments": [ "-v", "--extra-vars", "hosts='default'" ],
         "user": "ec2-user",
         "host_alias": "default",

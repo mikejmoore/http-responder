@@ -17,7 +17,6 @@
     name: git
     state: absent
 
-
 #Line in file:
 # sudo su - ec2-user -c 'cd ./http-responder; RAILS_ENV=production rails s -p 3000'
 # /etc/rc.d/rc.local
