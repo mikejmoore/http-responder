@@ -1,0 +1,43 @@
+---
+- name: Install Git
+  become: true
+  yum:
+    name: git
+    state: latest
+
+
+- name: "Git clone the http-responder"
+  git:
+    repo: https://github.com/mikejmoore/http-responder.git
+    dest: /home/ec2-user/http-responder
+
+- name: Uninstall Git
+  become: true
+  yum:
+    name: git
+    state: absent
+
+
+#Line in file:
+# sudo su - ec2-user -c 'cd ./http-responder; RAILS_ENV=production rails s -p 3000'
+# /etc/rc.d/rc.local
+- name: 'Bundler'
+  become: true
+  lineinfile:
+    path: /etc/rc.d/rc.local
+    line: "sudo su - ec2-user -c 'cd ./http-responder; gem install bundler; bundle'"
+
+- name: 'Launch script'
+  become: true
+  lineinfile:
+    path: /etc/rc.d/rc.local
+    line: "sudo su - ec2-user -c 'cd ./http-responder; RAILS_ENV=production rails s -p 3000'"
+
+
+# - name: Copy web pages to instance
+#   become: true
+#   copy:
+#     src: index.html
+#     dest: /usr/share/nginx/html/
+#     owner: nginx
+#     mode: "u=r"

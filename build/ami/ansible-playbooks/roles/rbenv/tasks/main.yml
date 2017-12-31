@@ -1,0 +1,43 @@
+---
+- name: Install libs 1
+  become: true
+  yum: pkg={{item}} state=installed
+  with_items:
+     - gcc-c++
+     - patch
+     - readline
+     - readline-devel
+     - zlib
+     - zlib-devel
+     - libyaml-devel
+     - libffi-devel
+     - bzip2
+     - autoconf
+     - automake
+     - libtool
+     - bison
+#     - iconv-devel
+     - sqlite-devel
+     - openssl-devel
+     - make
+
+- name: Curl rvm 1
+  shell: "curl -sSL https://rvm.io/mpapis.asc | gpg --import -"
+
+- name: Curl rvm 2
+  shell: curl -L get.rvm.io | bash -s stable
+
+- name: Install rvm
+  shell: "source /home/ec2-user/.profile"
+
+- name: Reload rvm
+  command: rvm reload
+
+- name: Verify rvm dependencies
+  command: rvm requirements run
+
+- name: Install Ruby 2.4.1
+  command: rvm install 2.4.1 --default
+
+- name: Install bundler
+  command: gem install bundler

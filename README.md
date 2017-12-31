@@ -19,7 +19,7 @@ Responds with JSON containing the parameters used by the handling code:
 ```
 > curl "localhost:3000?memory=1000&cpu=100&delay=1000&file=100"
 
-{"host":"Mikes-MacBook-Pro.local\n","delay":1000,"cpu":100,"memory":1000,"timestamp":"2017-12-30 14:29:01 -0700","uuid":"5d893ce4-e582-4810-a29a-5ade921dc788"}
+{"host":"host-10-19-79-12","delay":1000,"cpu":100,"memory":1000,"timestamp":"2017-12-30 14:29:01 -0700","uuid":"5d893ce4-e582-4810-a29a-5ade921dc788"}
 ```
 ## Parameters
 * delay - Value of 0 - large-number to indicate the delay in responding to the request. The unit is milliseconds.
