@@ -26,3 +26,20 @@ Responds with JSON containing the parameters used by the handling code:
 * cpu - Value of 1-100 to indicate the intensity of CPU usage for the handler.
 * file - Value of 0 - large-number to indicate how much file IO to perform per request.  Too large of a number will delay the request more than the 'delay' parameter specifies.
 * memory - Value of 0 - large-number to indicate how many GB's of memory to use while handling the request.
+
+## Building a HTTP Responder AMI
+```
+> cd http-responder/build/ami
+> cp variables.json.sample variables.json
+```
+Insert your AWS credentials into variables.JSON
+
+Run Packer
+```
+> packer build -var-file ./variables.json ./build_ami.json
+```
+The AMI places the Rails application and compatible Ruby onto Amazon Linux.
+
+When launched, this image creates an EC2 instance that should automatically start the HTTP Responder service on Port 3000.
+
+Be sure to open port 3000 on the instance's security group.
