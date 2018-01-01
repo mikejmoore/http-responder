@@ -44,13 +44,14 @@ When launched, this image creates an EC2 instance that should automatically star
 
 Be sure to open port 3000 on the instance's security group.
 
-## Building and running with Docker
-Building a Docker image:
+## Building and Running with Docker
+### Building is optional
+Needed only if you make changes to the source.  Running will download the image from Docker registry:
 ```
 > cd build/docker
 > packer build ./build_docker.json
 ```
-Running and testing:
+### Running and testing:
 ```
 > docker run -it -d -p 3000:3000 --name http_responder mijomoore/http-responder:1.0
 
