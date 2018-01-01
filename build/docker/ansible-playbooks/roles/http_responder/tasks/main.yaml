@@ -10,3 +10,6 @@
     dest: /
     owner: root
     mode: "u=x"
+
+- name: Bundle stuff
+  shell: "cd /opt/http-responder/ && gem install bundler && bundle"

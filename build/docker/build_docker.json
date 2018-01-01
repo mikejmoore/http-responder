@@ -6,7 +6,8 @@
       "commit": "true",
       "changes": [
           "ENV RAILS_ENV production",
-          "EXPOSE 3000"
+          "EXPOSE 3000",
+          "ENTRYPOINT /startup.sh"
         ],
       "run_command": [
           "-d",
