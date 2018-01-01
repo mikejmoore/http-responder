@@ -1,0 +1,12 @@
+---
+- name: "Git clone the http-responder"
+  git:
+    repo: https://github.com/mikejmoore/http-responder.git
+    dest: /opt/http-responder
+
+- name: Place the entrypoint on the image
+  copy:
+    src: startup.sh
+    dest: /
+    owner: root
+    mode: "u=x"
