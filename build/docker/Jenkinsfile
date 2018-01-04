@@ -11,7 +11,7 @@ pipeline {
         }
         steps {
            echo 'Building Docker....'
-           sh 'packer build build_docker.json'
+           sh 'packer build build/docker/build_docker.json'
         }
     }
 
