@@ -56,5 +56,6 @@ Needed only if you make changes to the source.  Running will download the image 
 > docker run -it -d -p 3000:3000 --name http_responder mijomoore/http-responder:1.0
 
 > curl "localhost:3000?delay=2000"
+
 {"host":"6cf9c3f29c4b","delay":2000,"cpu":20,"memory":20,"timestamp":"2018-01-01 04:54:07 +0000","uuid":"f7e064f8-1afb-4b0d-ad26-c81856dfb094"}
 ```
