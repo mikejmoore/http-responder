@@ -1,4 +1,8 @@
 {
+  "variables": {
+    "image_version":         "{{env `IMAGE_VERSION`}}"
+    },
+
   "builders": [
     {
       "type": "docker",
@@ -58,7 +62,7 @@
        {
           "type": "docker-tag",
           "repository": "mijomoore/http-responder",
-          "tag": "1.0"
+          "tag": "{{user `image_version`}}"
         }
       ]
     ]
