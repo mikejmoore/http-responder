@@ -12,13 +12,8 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
-
-/node_modules
-/yarn-error.log
-build/ami/variables.json
-
+/application/log/*
+/application/tmp/*
+!/application/log/.keep
+!/application/tmp/.keep
 .byebug_history

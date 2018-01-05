@@ -12,7 +12,8 @@ pipeline {
           label 'main'
       }
       steps {
-        sh 'cd ../ && ls -alt'
+        sh 'ls -alt && tar czvf application.tgz application/*'
+        sh 'mv application.tgz build/docker/with_dockerfile/*'
       }
     }
 
