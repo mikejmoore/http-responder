@@ -21,7 +21,6 @@ ADD startup.sh /
 RUN apk add --update mysql-client \
     && rm -f /var/cache/apk/*  \
     && cd /admin_server \
-    && bundle install --without development test \
 		&& apk add --update curl \
 		&& apk add --update socat \
     && apk del $BUILD_PACKAGES \
@@ -30,6 +29,7 @@ RUN apk add --update mysql-client \
 ADD application.tgz /
 
 WORKDIR /
-RUN tar xzvf application.tgz
+RUN tar xzvf application.tgz \
+      && bundle install --without development test
 
 CMD ["./startup.sh"]
