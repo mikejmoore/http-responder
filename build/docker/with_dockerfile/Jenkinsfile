@@ -1,10 +1,12 @@
 pipeline {
   agent none
+
   environment {
         RAILS_ENV = 'production'
         IMAGE_VERSION = "${RAILS_ENV}"
   }
 
+  stages {
     stage('Build Docker with Dockerfile') {
         agent {
             dockerfile {
