@@ -29,7 +29,7 @@ RUN apk add --update mysql-client \
 
 WORKDIR /
 
-RUN   ls -alt \
+RUN   find . -name 'application.tgz' \
       && tar xzvf application.tgz \
       && bundle install --without development test
 
