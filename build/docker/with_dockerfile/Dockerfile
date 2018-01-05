@@ -26,10 +26,12 @@ RUN apk add --update mysql-client \
     && apk del $BUILD_PACKAGES \
 		&& chmod ogu+x /startup.sh
 
+WORKDIR /
+
 ADD application.tgz /
 
-WORKDIR /
-RUN tar xzvf application.tgz \
+RUN   ls
+      && tar xzvf application.tgz \
       && bundle install --without development test
 
 CMD ["./startup.sh"]
