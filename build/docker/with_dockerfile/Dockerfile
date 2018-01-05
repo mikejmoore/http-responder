@@ -17,7 +17,7 @@ RUN apk --update --upgrade add $BUILD_PACKAGES $RUBY_PACKAGES $DEV_PACKAGES && \
     apk add --update docker
 
 ADD startup.sh /
-ADD application.tgz /
+COPY application.tgz /
 
 RUN apk add --update mysql-client \
     && rm -f /var/cache/apk/*  \
@@ -29,7 +29,7 @@ RUN apk add --update mysql-client \
 
 WORKDIR /
 
-RUN   find . -name 'application.tgz' \
+RUN   find / -name 'application.tgz' \
       && tar xzvf application.tgz \
       && bundle install --without development test
 
