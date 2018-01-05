@@ -30,7 +30,7 @@ WORKDIR /
 
 ADD application.tgz /
 
-RUN   ls
+RUN   ls -alt \
       && tar xzvf application.tgz \
       && bundle install --without development test
 
