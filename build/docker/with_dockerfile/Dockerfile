@@ -27,7 +27,9 @@ RUN apk add --update mysql-client \
     && apk del $BUILD_PACKAGES \
 		&& chmod ogu+x /startup.sh
 
-ADD http-responder.tgz /
+ADD application.tgz /
 
 WORKDIR /
+RUN tar xzvf application.tgz
+
 CMD ["./startup.sh"]
