@@ -5,13 +5,6 @@ pipeline {
         IMAGE_VERSION = "${RAILS_ENV}"
   }
 
-  stages {
-    stage('Checkout'){
-        steps {
-            checkout scm
-        }
-    }
-
     stage('Build Docker with Dockerfile') {
         agent {
             dockerfile {
