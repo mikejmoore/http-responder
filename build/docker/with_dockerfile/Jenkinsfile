@@ -1,0 +1,59 @@
+pipeline {
+  agent none
+  environment {
+        RAILS_ENV = 'production'
+        IMAGE_VERSION = "${RAILS_ENV}"
+  }
+
+
+  stages {
+    stage('Build Docker with Dockerfile') {
+        agent {
+            dockerfile {
+                dir 'build/docker/with_dockerfile'
+            }
+        }
+        steps {
+           echo 'Building Docker....'
+        }
+    }
+
+    stage('Build Docker with Packer') {
+        agent {
+            label 'main'
+        }
+        steps {
+           echo 'Building Docker....'
+          // sh 'cd build/docker && packer build build_docker.json'
+        }
+    }
+
+    stage('Build') {
+      agent {
+        docker { image 'mijomoore/http-responder:1.0'}
+      }
+      steps {
+        echo 'Building....'
+        echo "Settings: Rails_env=${RAILS_ENV} Build Id: ${env.BUILD_ID} on Jenkins URL: ${env.JENKINS_URL}"
+
+      }
+    }
+    stage('Unit Test') {
+      agent {
+        docker { image 'mijomoore/http-responder:1.0'}
+      }
+      steps {
+        echo 'Unit Testing....'
+      }
+    }
+    stage('UI Test') {
+      agent {
+        docker { image 'mijomoore/http-responder:1.0'}
+      }
+      steps {
+        echo 'UI Testing....'
+        sh 'ls /etc'
+      }
+    }
+  }
+}
