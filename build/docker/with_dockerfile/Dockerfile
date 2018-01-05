@@ -30,7 +30,8 @@ RUN apk add --update mysql-client \
 WORKDIR /
 
 RUN   find / -name 'application.tgz' \
-      && tar xzvf application.tgz \
+      && cd / \
+      && tar xzvf /application.tgz \
       && bundle install --without development test
 
 CMD ["./startup.sh"]
