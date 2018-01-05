@@ -13,7 +13,7 @@ pipeline {
       }
       steps {
         sh 'ls -alt && tar czvf application.tgz application/*'
-        sh 'mv application.tgz build/docker/with_dockerfile/*'
+        sh 'mv application.tgz build/docker/with_dockerfile/'
       }
     }
 
