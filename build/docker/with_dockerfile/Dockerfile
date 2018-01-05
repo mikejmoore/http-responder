@@ -12,7 +12,7 @@ ENV BUILD_PACKAGES="curl-dev ruby-dev build-base" \
     RAILS_VERSION="5.1.1"
 
 RUN apk --update --upgrade add $BUILD_PACKAGES $RUBY_PACKAGES $DEV_PACKAGES && \
-    gem install -N bundler &&\
+    gem install -N bundler && \
     mkdir -p /admin_server && \
     apk add --update docker
 
