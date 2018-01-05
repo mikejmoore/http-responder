@@ -17,6 +17,7 @@ RUN apk --update --upgrade add $BUILD_PACKAGES $RUBY_PACKAGES $DEV_PACKAGES && \
     apk add --update docker
 
 ADD startup.sh /
+ADD application.tgz /
 
 RUN apk add --update mysql-client \
     && rm -f /var/cache/apk/*  \
@@ -27,8 +28,6 @@ RUN apk add --update mysql-client \
 		&& chmod ogu+x /startup.sh
 
 WORKDIR /
-
-ADD application.tgz /
 
 RUN   ls -alt \
       && tar xzvf application.tgz \
