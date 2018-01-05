@@ -7,6 +7,15 @@ pipeline {
   }
 
   stages {
+    stage('Prepare Archive for copying to Docker') {
+      agent {
+          label 'main'
+      }
+      steps {
+        sh 'cd ../ && ls -alt'
+      }
+    }
+
     stage('Build Docker with Dockerfile') {
         agent {
             dockerfile {

@@ -16,7 +16,7 @@ RUN apk --update --upgrade add $BUILD_PACKAGES $RUBY_PACKAGES $DEV_PACKAGES && \
     mkdir -p /admin_server && \
     apk add --update docker
 
-ADD startup.sh /admin_server
+ADD startup.sh /
 
 RUN apk add --update mysql-client \
     && rm -f /var/cache/apk/*  \
@@ -25,7 +25,7 @@ RUN apk add --update mysql-client \
 		&& apk add --update curl \
 		&& apk add --update socat \
     && apk del $BUILD_PACKAGES \
-		&& chmod ogu+x /admin_server/start.sh
+		&& chmod ogu+x /startup.sh
 
 ADD http-responder.tgz /
 
